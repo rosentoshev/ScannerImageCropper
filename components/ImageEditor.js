@@ -14,12 +14,12 @@ function ImageEditor({image, rectangleCoordinates}) {
 
   useEffect(() => {
     Image.getSize(image, (width, height) => {
-      setImageWidth(width),
+        setImageWidth(width),
         setImageHeight(height),
         setInitialImage(image),
         setNewRectangleCoordinates(rectangleCoordinates);
     });
-  }, []);
+  }, [image]);
 
   function updateImage(photo, newCoordinates) {
     setPhoto(photo);
@@ -44,29 +44,25 @@ function ImageEditor({image, rectangleCoordinates}) {
   }
 
   function crop() {
-    console.log(customCrop.current);
-    console.log(customCrop.crop);
-    console.log(customCrop);
-    console.log(rectangleCoordinates);
-    setNewRectangleCoordinates({
-      topLeft: {
-        x: customCrop.current.state.topLeft.x._value,
-        y: customCrop.current.state.topLeft.y._value,
-      },
-      topRight: {
-        x: customCrop.current.state.topRight.x._value,
-        y: customCrop.current.state.topRight.y._value,
-      },
-      bottomRight: {
-        x: customCrop.current.state.bottomRight.x._value,
-        y: customCrop.current.state.bottomRight.y._value,
-      },
-      bottomLeft: {
-        x: customCrop.current.state.bottomLeft.x._value,
-        y: customCrop.current.state.bottomLeft.y._value,
-      },
-    });
-    customCrop.current.crop();
+    // setNewRectangleCoordinates({
+    //   topLeft: {
+    //     x: customCrop.current.state.topLeft.x._value,
+    //     y: customCrop.current.state.topLeft.y._value,
+    //   },
+    //   topRight: {
+    //     x: customCrop.current.state.topRight.x._value,
+    //     y: customCrop.current.state.topRight.y._value,
+    //   },
+    //   bottomRight: {
+    //     x: customCrop.current.state.bottomRight.x._value,
+    //     y: customCrop.current.state.bottomRight.y._value,
+    //   },
+    //   bottomLeft: {
+    //     x: customCrop.current.state.bottomLeft.x._value,
+    //     y: customCrop.current.state.bottomLeft.y._value,
+    //   },
+    // });
+    customCrop.crop();
   }
 
   console.log(rectangleCoordinates);
