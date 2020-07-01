@@ -62,7 +62,8 @@ function ImageEditor({image, rectangleCoordinates}) {
     //     y: customCrop.current.state.bottomLeft.y._value,
     //   },
     // });
-    customCrop.crop();
+    console.log(customCrop);
+    customCrop.current.crop();
   }
 
   console.log(rectangleCoordinates);

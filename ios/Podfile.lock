@@ -307,7 +307,7 @@ PODS:
     - React
   - RNGestureHandler (1.6.1):
     - React
-  - RNPdfScanner (1.4.2):
+  - RNPdfScanner (2.1.1):
     - React
   - RNPermissions (2.1.5):
     - React
@@ -377,7 +377,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
-  - RNPdfScanner (from `../node_modules/react-native-document-scanner/ios`)
+  - "RNPdfScanner (from `../node_modules/@woonivers/react-native-document-scanner/ios`)"
   - RNPermissions (from `../node_modules/react-native-permissions`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
@@ -464,7 +464,7 @@ EXTERNAL SOURCES:
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNPdfScanner:
-    :path: "../node_modules/react-native-document-scanner/ios"
+    :path: "../node_modules/@woonivers/react-native-document-scanner/ios"
   RNPermissions:
     :path: "../node_modules/react-native-permissions"
   RNReanimated:
@@ -521,7 +521,7 @@ SPEC CHECKSUMS:
   ReactCommon: ed4e11d27609d571e7eee8b65548efc191116eb3
   RNCMaskedView: f5c7d14d6847b7b44853f7acb6284c1da30a3459
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
-  RNPdfScanner: 26380aeb5571cd6ff88bb93bab37162e17da9273
+  RNPdfScanner: 3cb94a7536fcccd9597d25bdfadd19e613efcbd7
   RNPermissions: 1888705aebcc81714efa5dbff94351e4388ae012
   RNReanimated: b5ccb50650ba06f6e749c7c329a1bc3ae0c88b43
   RNScreens: c526239bbe0e957b988dacc8d75ac94ec9cb19da

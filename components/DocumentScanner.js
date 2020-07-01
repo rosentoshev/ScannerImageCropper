@@ -10,8 +10,8 @@ import {
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import Permissions from 'react-native-permissions';
-import PDFScanner from 'react-native-document-scanner';
-import {Icon} from 'react-native-elements';
+import PDFScanner from '@woonivers/react-native-document-scanner';
+import {Icon} from 'react-native-elements'; 
 import ImageEditor from './ImageEditor';
 
 function DocumentScanner({navigation}) {
@@ -38,6 +38,7 @@ function DocumentScanner({navigation}) {
   }
 
   function handleOnPress() {
+    console.log(scanner)
     scanner.current.capture();
   }
 
