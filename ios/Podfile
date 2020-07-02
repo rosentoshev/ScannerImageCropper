@@ -79,7 +79,7 @@ target 'ScannerImageCropperPrototype' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  pod 'RNCustomCrop', :path => '../node_modules/react-native-perspective-image-cropper'
+  pod 'react-native-perspective-image-cropper', :path => '../node_modules/react-native-perspective-image-cropper'
 
   target 'ScannerImageCropperPrototypeTests' do
     inherit! :complete

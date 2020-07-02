@@ -18,7 +18,6 @@ function DocumentScanner({navigation, route}) {
   const scanner = useRef(null);
   const [data, setData] = useState({});
   const [allowed, setAllowed] = useState(false);
-  const otherParam = route.params.otherParam;
 
   useEffect(() => {
     async function requestCamera() {
@@ -50,27 +49,25 @@ function DocumentScanner({navigation, route}) {
     );
   }
   if (data.initialImage) {
-    console.log('data', data);
-    navigation.navigate('Image Cropper', {
-      imageParam: data.initialImage,
-      rectangleCoordinates: data.rectangleCoordinates,
-    });
-    // return (
-    //   <React.Fragment>
-    //     <ImageEditor
-    //       image={data.initialImage}
-    //       rectangleCoordinates={data.rectangleCoordinates}
-    //       handleOnPressRetry={handleOnPressRetry}
-    //     />
-    //     {/* <Image source={{uri: data.croppedImage}} style={styles.preview} />
-    // //     <TouchableOpacity onPress={handleOnPressRetry} style={styles.button}>
-    // //       <Text style={styles.buttonText}>Retry</Text>
-    // //     </TouchableOpacity> */}
-    //   </React.Fragment>
-    // );
+    // console.log('data', data);
+    // navigation.navigate('Image Cropper', {
+    //   imageParam: data.initialImage,
+    //   rectangleCoordinates: data.rectangleCoordinates,
+    // });
+    return (
+      <React.Fragment>
+        <ImageEditor
+          image={data.initialImage}
+          rectangleCoordinates={data.rectangleCoordinates}
+          handleOnPressRetry={handleOnPressRetry}
+        />
+        {/* <Image source={{uri: data.croppedImage}} style={styles.preview} />
+    //     <TouchableOpacity onPress={handleOnPressRetry} style={styles.button}>
+    //       <Text style={styles.buttonText}>Retry</Text>
+    //     </TouchableOpacity> */}
+      </React.Fragment>
+    );
   }
-
-  console.log(otherParam);
 
   return (
     <>

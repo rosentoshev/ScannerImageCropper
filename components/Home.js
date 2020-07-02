@@ -12,11 +12,7 @@ function HomeScreen({navigation}) {
       <Text>Home Screen</Text>
       <Button
         title="Go to Document Scanner"
-        onPress={() =>
-          navigation.navigate('Document Scanner', {
-            otherParam: 'test',
-          })
-        }
+        onPress={() => navigation.navigate('Document Scanner')}
       />
     </View>
   );

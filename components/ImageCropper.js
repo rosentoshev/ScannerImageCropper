@@ -2,8 +2,13 @@
 import React, {Component} from 'react';
 import {View, Text, Button, Image, TouchableOpacity} from 'react-native';
 import CustomCrop from 'react-native-perspective-image-cropper';
+import ImagePicker from 'react-native-image-crop-picker';
 
 class ImageCropper extends Component {
+  state = {
+    image: {},
+  };
+
   componentWillMount() {
     const {route} = this.props;
     const imageProp = JSON.stringify(route.params.imageParam);
@@ -28,8 +33,31 @@ class ImageCropper extends Component {
   }
 
   crop() {
-    console.log(this.customCrop);
+    const imageProp = this.props.route.params.imageParam;
+    ImagePicker.openCropper({
+      path: imageProp,
+      width: 300,
+      height: 400,
+    }).then((image) => {
+      this.setState({
+        image: {
+          uri: image.path,
+          width: image.width,
+          height: image.height,
+          mime: image.mime,
+        },
+      });
+    });
     this.customCrop.crop();
+  }
+
+  renderImage() {
+    return (
+      <Image
+        style={{width: 300, height: 300, resizeMode: 'contain'}}
+        source={this.state.image.uri}
+      />
+    );
   }
 
   render() {
@@ -41,6 +69,8 @@ class ImageCropper extends Component {
 
     return (
       <View>
+        {this.state.image?.uri?.length > 0 ?  this.renderImage() :
+        <>
         <CustomCrop
           updateImage={this.updateImage.bind(this)}
           rectangleCoordinates={rectangleCoordinatesProp}
@@ -58,6 +88,8 @@ class ImageCropper extends Component {
         <TouchableOpacity onPress={this.crop.bind(this)}>
           <Text>CROP IMAGE</Text>
         </TouchableOpacity>
+        </>
+        }
       </View>
     );
   }
