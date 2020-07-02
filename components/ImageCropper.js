@@ -1,21 +1,92 @@
-import * as React from 'react';
-import {View, Text, Button} from 'react-native';
+'use strict';
+import React, {Component} from 'react';
+import {View, Text, Button, Image, TouchableOpacity} from 'react-native';
+import CustomCrop from 'react-native-perspective-image-cropper';
 
-function ImageCropper() {
-  return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
-      <Text>Home Screen</Text>
-      <Button
-        title="Go to Image Cropping"
-        onPress={() => console.log('Image Crop')}
-      />
-    </View>
-  );
+class ImageCropper extends Component {
+  constructor(props) {
+    super(props);
+    const { route } = this.props;
+    const imageProp = JSON.stringify(route.params.imageParam);
+    const rectangleCoordinatesProp = JSON.stringify(
+      route.params.rectangleCoordinates,
+    );
+    Image.getSize(`data:image/jpeg;base64,${imageProp}`, (width, height) => {
+      this.setState({
+        imageWidth: width,
+        imageHeight: height,
+        initialImage: imageProp,
+        rectangleCoordinates: {
+          topLeft: { x: 10, y: 10 },
+          topRight: { x: 10, y: 10 },
+          bottomRight: { x: 10, y: 10 },
+          bottomLeft: { x: 10, y: 10 },
+        },
+      });
+    });
+  }
+
+  // componentDidMount() {
+  //   const {route} = this.props;
+  //   const imageProp = JSON.stringify(route.params.imageParam);
+  //   const rectangleCoordinatesProp = JSON.stringify(
+  //     route.params.rectangleCoordinates,
+  //   );
+  //   Image.getSize(imageProp, (width, height) => {
+  //     this.setState({
+  //       imageWidth: width,
+  //       imageHeight: height,
+  //       initialImage: imageProp,
+  //       rectangleCoordinates: rectangleCoordinatesProp,
+  //     });
+  //   });
+  // }
+
+  updateImage(image, newCoordinates) {
+    this.setState({
+      image,
+      rectangleCoordinates: newCoordinates,
+    });
+  }
+
+  crop() {
+    console.log(this.customCrop);
+    this.customCrop.crop();
+  }
+
+  render() {
+    const {route} = this.props;
+    const imageProp = route.params.imageParam;
+    const rectangleCoordinatesProp = route.params.rectangleCoordinates;
+    const DEFAULT_IMAGE_HEIGHT = 3264;
+    const DEFAULT_IMAGE_WIDTH = 2448;
+
+    return (
+      <View>
+        {this.state.initialImage ? (
+          <>
+            <CustomCrop
+              updateImage={this.updateImage.bind(this)}
+              rectangleCoordinates={rectangleCoordinatesProp}
+              initialImage={this.state.initialImage}
+              height={DEFAULT_IMAGE_HEIGHT}
+              width={DEFAULT_IMAGE_WIDTH}
+              ref={(ref) => {
+                this.customCrop = ref;
+              }}
+              overlayColor="rgba(18,190,210, 1)"
+              overlayStrokeColor="rgba(20,190,210, 1)"
+              handlerColor="rgba(20,150,160, 1)"
+              enablePanStrict={false}
+            />
+            <TouchableOpacity onPress={this.crop.bind(this)}>
+              <Text>CROP IMAGE</Text>
+            </TouchableOpacity>
+          </>
+        ) : null}
+      </View>
+    );
+  }
 }
 
 // const styles = StyleSheet.create({

@@ -25,7 +25,7 @@
     "react-native-elements": "^2.0.2",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-permissions": "^2.1.5",
-    "react-native-perspective-image-cropper": "git+https://github.com/Woonivers/react-native-perspective-image-cropper.git",
+    "react-native-perspective-image-cropper": "git+https://github.com/Beeltec/react-native-perspective-image-cropper.git",
     "react-native-reanimated": "^1.9.0",
     "react-native-safe-area-context": "^3.0.6",
     "react-native-screens": "^2.9.0",

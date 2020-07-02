@@ -11,13 +11,15 @@ import {
 import {NavigationContainer} from '@react-navigation/native';
 import Permissions from 'react-native-permissions';
 import PDFScanner from '@woonivers/react-native-document-scanner';
-import {Icon} from 'react-native-elements'; 
+import {Icon} from 'react-native-elements';
 import ImageEditor from './ImageEditor';
+import ImageCropper from './ImageCropper';
 
-function DocumentScanner({navigation}) {
+function DocumentScanner({navigation, route}) {
   const scanner = useRef(null);
   const [data, setData] = useState({});
   const [allowed, setAllowed] = useState(false);
+  const otherParam = route.params.otherParam;
 
   useEffect(() => {
     async function requestCamera() {
@@ -38,10 +40,8 @@ function DocumentScanner({navigation}) {
   }
 
   function handleOnPress() {
-    console.log(scanner)
     scanner.current.capture();
   }
-
   if (!allowed) {
     console.log('You must accept camera permission');
     return (
@@ -52,20 +52,34 @@ function DocumentScanner({navigation}) {
   }
   if (data.initialImage) {
     console.log('data', data);
+    // navigation.navigate('Image Cropper', {
+    //   imageParam: data.initialImage,
+    //   rectangleCoordinates: data.rectangleCoordinates,
+    // });
+    // return (
+    //   <React.Fragment>
+    //     <ImageEditor
+    //       image={data.initialImage}
+    //       rectangleCoordinates={data.rectangleCoordinates}
+    //       handleOnPressRetry={handleOnPressRetry}
+    //     />
+    //     {/* <Image source={{uri: data.croppedImage}} style={styles.preview} />
+    // //     <TouchableOpacity onPress={handleOnPressRetry} style={styles.button}>
+    // //       <Text style={styles.buttonText}>Retry</Text>
+    // //     </TouchableOpacity> */}
+    //   </React.Fragment>
+    // );
+
     return (
-      <React.Fragment>
-        <ImageEditor
-          image={data.initialImage}
-          rectangleCoordinates={data.rectangleCoordinates}
-          handleOnPressRetry={handleOnPressRetry}
-        />
-        {/* <Image source={{uri: data.croppedImage}} style={styles.preview} />
-        <TouchableOpacity onPress={handleOnPressRetry} style={styles.button}>
-          <Text style={styles.buttonText}>Retry</Text>
-        </TouchableOpacity> */}
-      </React.Fragment>
+      <ImageCropper
+        image={data.initialImage}
+        rectangleCoordinates={data.rectangleCoordinates}
+        handleOnPressRetry={handleOnPressRetry}
+      />
     );
   }
+
+  console.log(otherParam);
 
   return (
     <>

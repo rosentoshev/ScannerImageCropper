@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {View, Text, Button} from 'react-native';
 
-function HomeScreen() {
+function HomeScreen({navigation}) {
   return (
     <View
       style={{
@@ -11,8 +11,12 @@ function HomeScreen() {
       }}>
       <Text>Home Screen</Text>
       <Button
-        title="Go to Image Cropping"
-        onPress={() => console.log('Image Crop')}
+        title="Go to Document Scanner"
+        onPress={() =>
+          navigation.navigate('Document Scanner', {
+            otherParam: 'test',
+          })
+        }
       />
     </View>
   );

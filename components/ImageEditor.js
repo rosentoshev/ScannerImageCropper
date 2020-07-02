@@ -14,12 +14,12 @@ function ImageEditor({image, rectangleCoordinates}) {
 
   useEffect(() => {
     Image.getSize(image, (width, height) => {
-        setImageWidth(width),
+      setImageWidth(width),
         setImageHeight(height),
         setInitialImage(image),
         setNewRectangleCoordinates(rectangleCoordinates);
     });
-  }, [image]);
+  }, []);
 
   function updateImage(photo, newCoordinates) {
     setPhoto(photo);
