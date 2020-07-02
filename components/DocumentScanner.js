@@ -13,7 +13,6 @@ import Permissions from 'react-native-permissions';
 import PDFScanner from '@woonivers/react-native-document-scanner';
 import {Icon} from 'react-native-elements';
 import ImageEditor from './ImageEditor';
-import ImageCropper from './ImageCropper';
 
 function DocumentScanner({navigation, route}) {
   const scanner = useRef(null);
@@ -52,10 +51,10 @@ function DocumentScanner({navigation, route}) {
   }
   if (data.initialImage) {
     console.log('data', data);
-    // navigation.navigate('Image Cropper', {
-    //   imageParam: data.initialImage,
-    //   rectangleCoordinates: data.rectangleCoordinates,
-    // });
+    navigation.navigate('Image Cropper', {
+      imageParam: data.initialImage,
+      rectangleCoordinates: data.rectangleCoordinates,
+    });
     // return (
     //   <React.Fragment>
     //     <ImageEditor
@@ -69,14 +68,6 @@ function DocumentScanner({navigation, route}) {
     // //     </TouchableOpacity> */}
     //   </React.Fragment>
     // );
-
-    return (
-      <ImageCropper
-        image={data.initialImage}
-        rectangleCoordinates={data.rectangleCoordinates}
-        handleOnPressRetry={handleOnPressRetry}
-      />
-    );
   }
 
   console.log(otherParam);
