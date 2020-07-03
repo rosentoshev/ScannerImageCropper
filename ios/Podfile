@@ -81,6 +81,7 @@ target 'ScannerImageCropperPrototype' do
 
   pod 'react-native-perspective-image-cropper', :path => '../node_modules/react-native-perspective-image-cropper'
 
+
   target 'ScannerImageCropperPrototypeTests' do
     inherit! :complete
     # Pods for testing

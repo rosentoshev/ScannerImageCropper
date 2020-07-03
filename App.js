@@ -7,6 +7,7 @@ import DocumentScannerScreen from './components/DocumentScanner';
 import HomeScreen from './components/Home';
 import ImageCropper from './components/ImageCropper';
 import ImageEditor from './components/ImageEditor';
+import ImageViewer from './components/ImageViewer';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -40,7 +41,7 @@ const App: () => React$Node = () => {
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Document Scanner" component={DocumentScannerScreen} />
         <Tab.Screen name="Image Cropper" component={ImageCropper} />
-        <Tab.Screen name="Image Edtior" component={ImageEditor} />
+        <Tab.Screen name="Image Viewer" component={ImageViewer} />
       </Tab.Navigator>
     </NavigationContainer>
   );

@@ -13,8 +13,9 @@ import Permissions from 'react-native-permissions';
 import PDFScanner from '@woonivers/react-native-document-scanner';
 import {Icon} from 'react-native-elements';
 import ImageEditor from './ImageEditor';
+import ImageCropper from './ImageCropper';
 
-function DocumentScanner({navigation, route}) {
+function DocumentScanner({navigation}) {
   const scanner = useRef(null);
   const [data, setData] = useState({});
   const [allowed, setAllowed] = useState(false);
@@ -49,18 +50,23 @@ function DocumentScanner({navigation, route}) {
     );
   }
   if (data.initialImage) {
-    // console.log('data', data);
-    // navigation.navigate('Image Cropper', {
-    //   imageParam: data.initialImage,
-    //   rectangleCoordinates: data.rectangleCoordinates,
-    // });
+    console.log('data', data);
+    navigation.navigate('Image Cropper', {
+      imageParam: data.initialImage,
+      rectangleCoordinates: data.rectangleCoordinates,
+    });
     return (
       <React.Fragment>
-        <ImageEditor
+        {/* <ImageEditor
           image={data.initialImage}
           rectangleCoordinates={data.rectangleCoordinates}
           handleOnPressRetry={handleOnPressRetry}
-        />
+        /> */}
+        {/* <ImageCropper
+          image={data.initialImage}
+          rectangleCoordinates={data.rectangleCoordinates}
+          handleOnPressRetry={handleOnPressRetry}
+        /> */}
         {/* <Image source={{uri: data.croppedImage}} style={styles.preview} />
     //     <TouchableOpacity onPress={handleOnPressRetry} style={styles.button}>
     //       <Text style={styles.buttonText}>Retry</Text>
@@ -73,6 +79,7 @@ function DocumentScanner({navigation, route}) {
     <>
       <Text>Receipt Scanner</Text>
       <PDFScanner
+        useBase64={false}
         ref={scanner}
         style={styles.scanner}
         onPictureTaken={setData}
