@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.documentscanner.DocumentScannerPackage;
+import com.documentscanner.DocumentScannerPackage;
 import fr.michaelvilleneuve.customcrop.RNCustomCropPackage;
 import fr.michaelvilleneuve.customcrop.RNCustomCropPackage;
 import com.oblador.vectoricons.VectorIconsPackage;

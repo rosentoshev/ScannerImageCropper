@@ -7,17 +7,26 @@ import {
   Image,
   TouchableHighlight,
   StyleSheet,
-  Dimensions
+  Dimensions,
 } from 'react-native';
 import CustomCrop from 'react-native-perspective-image-cropper';
 import ImagePicker from 'react-native-image-crop-picker';
+import {
+  responsiveHeight,
+  responsiveWidth,
+  responsiveFontSize,
+} from 'react-native-responsive-dimensions';
 
 class ImageCropper extends Component {
   constructor(props) {
     super(props);
     const {route} = props;
+    const windowWidth = Dimensions.get('screen').width;
+    const windowHeight = Dimensions.get('screen').height;
+
     const DEFAULT_IMAGE_HEIGHT = 3264;
     const DEFAULT_IMAGE_WIDTH = 2448;
+
     this.state = {
       image: '',
       initialImage: route.params.imageParam,
@@ -25,6 +34,15 @@ class ImageCropper extends Component {
       imageWidth: DEFAULT_IMAGE_WIDTH,
       imageHeight: DEFAULT_IMAGE_HEIGHT,
     };
+  }
+
+  componentDidMount() {
+    Image.getSize(this.props.route.params.imageParam, (width, height) => {
+      this.setState({
+        imageWidth: width,
+        imageHeight: height,
+      });
+    });
   }
 
   // componentDidMount() {
@@ -45,6 +63,7 @@ class ImageCropper extends Component {
       rectangleCoordinates: newCoordinates,
     });
     if (this.state.image.length > 0) {
+      console.log(this.state.image);
       this.props.navigation.navigate('Image Viewer', {
         croppedImage: this.state.image,
         imageHeight: this.state.imageHeight,

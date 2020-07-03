@@ -8,13 +8,15 @@ function ImageViewer({route}) {
   const screenWidth = Math.round(Dimensions.get('window').width);
   const screenHeight = Math.round(Dimensions.get('window').height - 100);
 
+  console.log(imageWidth);
+  console.log(imageHeight);
   return (
     <View style={styles.container}>
       <Image
         source={{
           uri: `data:image/jpg;base64,${croppedImage}`,
-          width: screenWidth,
-          height: screenHeight, 
+          width: imageWidth,
+          height: imageHeight,
         }}
       />
     </View>

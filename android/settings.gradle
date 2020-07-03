@@ -1,4 +1,8 @@
 rootProject.name = 'ScannerImageCropperPrototype'
+include ':@woonivers_react-native-document-scanner'
+project(':@woonivers_react-native-document-scanner').projectDir = new File(rootProject.projectDir, '../node_modules/@woonivers/react-native-document-scanner/android')
+include ':@woonivers_react-native-document-scanner'
+project(':@woonivers_react-native-document-scanner').projectDir = new File(rootProject.projectDir, '../node_modules/@woonivers/react-native-document-scanner/android')
 include ':react-native-perspective-image-cropper'
 project(':react-native-perspective-image-cropper').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-perspective-image-cropper/android')
 include ':react-native-perspective-image-cropper'
@@ -9,5 +13,11 @@ apply from: file("../node_modules/@react-native-community/cli-platform-android/n
 
 include ':openCVLibrary310'
 project(':openCVLibrary310').projectDir = new File(rootProject.projectDir,'../node_modules/react-native-perspective-image-cropper/android/openCVLibrary310')
+
+include ':openCVLibrary310'
+project(':openCVLibrary310').projectDir = new File(rootProject.projectDir,'../node_modules/react-native-document-scanner/android/openCVLibrary310')
+
+include ':openCVLibrary310'
+project(':openCVLibrary310').projectDir = new File(rootProject.projectDir,'../node_modules/@woonivers/react-native-document-scanner/android/openCVLibrary310')
 
 include ':app'
