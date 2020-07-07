@@ -1,5 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import { View, Image, StyleSheet, Dimensions} from 'react-native';
+import {
+  responsiveScreenHeight,
+  responsiveScreenWidth,
+} from 'react-native-responsive-dimensions';
 
 function ImageViewer({route}) {
   const croppedImage = route.params.croppedImage;
@@ -15,8 +19,8 @@ function ImageViewer({route}) {
       <Image
         source={{
           uri: `data:image/jpg;base64,${croppedImage}`,
-          width: imageWidth,
-          height: imageHeight,
+          width: responsiveScreenWidth(100),
+          height: responsiveScreenHeight(86),
         }}
       />
     </View>
@@ -25,7 +29,10 @@ function ImageViewer({route}) {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 50,
+    flex: 1,
+    alignSelf: 'center',
+    height: responsiveScreenHeight(100), // 100% of Screen height
+    width: responsiveScreenWidth(100), // 100% of Screen width
   },
 });
 

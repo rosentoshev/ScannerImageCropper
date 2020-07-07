@@ -8,13 +8,13 @@ import {
   TouchableHighlight,
   StyleSheet,
   Dimensions,
+  SafeAreaView,
 } from 'react-native';
 import CustomCrop from 'react-native-perspective-image-cropper';
 import ImagePicker from 'react-native-image-crop-picker';
 import {
-  responsiveHeight,
-  responsiveWidth,
-  responsiveFontSize,
+  responsiveScreenHeight,
+  responsiveScreenWidth,
 } from 'react-native-responsive-dimensions';
 
 class ImageCropper extends Component {
@@ -45,18 +45,6 @@ class ImageCropper extends Component {
     });
   }
 
-  // componentDidMount() {
-  //   const {image, rectangleCoordinates} = this.props;
-  //   Image.getSize(image, (width, height) => {
-  //     this.setState({
-  //       imageWidth: width,
-  //       imageHeight: height,
-  //       initialImage: image,
-  //       rectangleCoordinates: rectangleCoordinates,
-  //     });
-  //   });
-  // }
-
   updateImage(image, newCoordinates) {
     this.setState({
       image,
@@ -80,42 +68,55 @@ class ImageCropper extends Component {
   render() {
     console.log(this.state);
     return (
-      <View>
-        <CustomCrop
-          updateImage={this.updateImage.bind(this)}
-          rectangleCoordinates={this.state.rectangleCoordinates}
-          initialImage={this.state.initialImage}
-          height={this.state.imageHeight}
-          width={this.state.imageWidth}
-          ref={(ref) => (this.customCrop = ref)}
-          overlayColor="rgba(18,190,210, 1)"
-          overlayStrokeColor="rgba(20,190,210, 1)"
-          handlerColor="rgba(20,150,160, 1)"
-          enablePanStrict={false}
-        />
-        <TouchableHighlight
-          style={styles.cropButtonTouchable}
-          onPress={this.crop.bind(this)}>
-          <View style={styles.cropButton}>
-            <Text style={styles.cropButtonLabel}>Crop Image</Text>
+      <SafeAreaView style={styles.safeArea}>
+        <View style={[styles.container]}>
+          <View style={{ flex: 5 }}>
+            <CustomCrop
+              updateImage={this.updateImage.bind(this)}
+              rectangleCoordinates={this.state.rectangleCoordinates}
+              initialImage={this.state.initialImage}
+              height={this.state.imageHeight}
+              width={this.state.imageWidth}
+              ref={(ref) => (this.customCrop = ref)}
+              overlayColor="rgba(18,190,210, 1)"
+              overlayStrokeColor="rgba(20,190,210, 1)"
+              handlerColor="rgba(20,150,160, 1)"
+              enablePanStrict={false}
+            />
           </View>
-        </TouchableHighlight>
-      </View>
+          <View style={{ flex: 1 }}>
+            <TouchableHighlight
+              style={styles.cropButtonTouchable}
+              onPress={this.crop.bind(this)}>
+              <View style={styles.cropButton}>
+                <Text style={styles.cropButtonLabel}>Crop Image</Text>
+              </View>
+            </TouchableHighlight>
+          </View>
+        </View>
+      </SafeAreaView>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 6,
+    width: responsiveScreenWidth(100),
+    height: responsiveScreenHeight(90),
+  },
   container: {
     flex: 1,
-    alignSelf: 'stretch',
-    marginTop: 60,
+    flexDirection: 'column',
+    alignSelf: 'center',
+    justifyContent: 'center',
   },
   imageCropper: {
     alignSelf: 'center',
     marginTop: 12,
   },
   cropButtonTouchable: {
+    flex: 2,
     alignSelf: 'center',
     marginTop: 12,
   },
@@ -133,44 +134,5 @@ const styles = StyleSheet.create({
     color: 'white',
   },
 });
-
-// const styles = StyleSheet.create({
-//   scrollView: {
-//     backgroundColor: Colors.lighter,
-//   },
-//   engine: {
-//     position: 'absolute',
-//     right: 0,
-//   },
-//   body: {
-//     backgroundColor: Colors.white,
-//   },
-//   sectionContainer: {
-//     marginTop: 32,
-//     paddingHorizontal: 24,
-//   },
-//   sectionTitle: {
-//     fontSize: 24,
-//     fontWeight: '600',
-//     color: Colors.black,
-//   },
-//   sectionDescription: {
-//     marginTop: 8,
-//     fontSize: 18,
-//     fontWeight: '400',
-//     color: Colors.dark,
-//   },
-//   highlight: {
-//     fontWeight: '700',
-//   },
-//   footer: {
-//     color: Colors.dark,
-//     fontSize: 12,
-//     fontWeight: '600',
-//     padding: 4,
-//     paddingRight: 12,
-//     textAlign: 'right',
-//   },
-// });
 
 export default ImageCropper;
