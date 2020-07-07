@@ -19,6 +19,8 @@ function DocumentScanner({navigation}) {
   const scanner = useRef(null);
   const [data, setData] = useState({});
   const [allowed, setAllowed] = useState(false);
+  const [lastDetectionType, setLastDetectionType] = useState('');
+  const [stableCounter, setStableCounter] = useState('');
 
   useEffect(() => {
     async function requestCamera() {
@@ -75,6 +77,19 @@ function DocumentScanner({navigation}) {
     );
   }
 
+  function renderDetectionType() {
+    switch (lastDetectionType) {
+      case 0:
+        return 'Correctly formatted receipt found';
+      case 1:
+        return 'Bad angle found';
+      case 2:
+        return 'Rectangle too far';
+      default:
+        return 'No feceipt detected yet';
+    }
+  }
+
   return (
     <>
       <Text>Receipt Scanner</Text>
@@ -87,6 +102,10 @@ function DocumentScanner({navigation}) {
         enableTorch={false}
         quality={0.5}
         manualOnly={true}
+        onRectangleDetect={({stableCounter, lastDetectionType}) => {
+          setStableCounter(stableCounter),
+            setLastDetectionType(lastDetectionType);
+        }}
         detectionCountBeforeCapture={5000000}
         detectionRefreshRateInMs={5000}
       />
@@ -99,6 +118,10 @@ function DocumentScanner({navigation}) {
           onPress={handleOnPress}
         />
       </View>
+      <Text style={styles.instructions}>
+        🧾 Align your receipt with the overlay and tap the camera button.
+      </Text>
+      <Text style={styles.instructions}>{renderDetectionType()}</Text>
     </>
   );
 }

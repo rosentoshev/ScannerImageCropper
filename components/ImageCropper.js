@@ -16,6 +16,10 @@ import {
   responsiveScreenHeight,
   responsiveScreenWidth,
 } from 'react-native-responsive-dimensions';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 class ImageCropper extends Component {
   constructor(props) {
@@ -70,21 +74,23 @@ class ImageCropper extends Component {
     return (
       <SafeAreaView style={styles.safeArea}>
         <View style={[styles.container]}>
-          <View style={{ flex: 5 }}>
-            <CustomCrop
-              updateImage={this.updateImage.bind(this)}
-              rectangleCoordinates={this.state.rectangleCoordinates}
-              initialImage={this.state.initialImage}
-              height={this.state.imageHeight}
-              width={this.state.imageWidth}
-              ref={(ref) => (this.customCrop = ref)}
-              overlayColor="rgba(18,190,210, 1)"
-              overlayStrokeColor="rgba(20,190,210, 1)"
-              handlerColor="rgba(20,150,160, 1)"
-              enablePanStrict={false}
-            />
+          <View style={{flex: 5}}>
+            <View style={styles.imageCropper}>
+              <CustomCrop
+                updateImage={this.updateImage.bind(this)}
+                rectangleCoordinates={this.state.rectangleCoordinates}
+                initialImage={this.state.initialImage}
+                height={this.state.imageHeight}
+                width={this.state.imageWidth}
+                ref={(ref) => (this.customCrop = ref)}
+                overlayColor="rgba(18,190,210, 1)"
+                overlayStrokeColor="rgba(20,190,210, 1)"
+                handlerColor="rgba(20,150,160, 1)"
+                enablePanStrict={false}
+              />
+            </View>
           </View>
-          <View style={{ flex: 1 }}>
+          <View style={{flex: 1}}>
             <TouchableHighlight
               style={styles.cropButtonTouchable}
               onPress={this.crop.bind(this)}>
@@ -102,18 +108,15 @@ class ImageCropper extends Component {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 6,
-    width: responsiveScreenWidth(100),
-    height: responsiveScreenHeight(90),
+    alignSelf: 'flex-start',
+    justifyContent: 'center',
+  },
+  imageCropper: {
+    height: hp('100%'),
   },
   container: {
     flex: 1,
     flexDirection: 'column',
-    alignSelf: 'center',
-    justifyContent: 'center',
-  },
-  imageCropper: {
-    alignSelf: 'center',
-    marginTop: 12,
   },
   cropButtonTouchable: {
     flex: 2,
@@ -123,6 +126,7 @@ const styles = StyleSheet.create({
   cropButton: {
     padding: 12,
     backgroundColor: 'blue',
+    justifyContent: 'center',
     borderRadius: 4,
   },
   cropButtonLabel: {
