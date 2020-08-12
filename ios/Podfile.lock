@@ -322,6 +322,8 @@ PODS:
     - React
   - RNReanimated (1.9.0):
     - React
+  - RNRectangleScanner (1.0.10):
+    - React
   - RNScreens (2.9.0):
     - React
   - RNSVG (12.1.0):
@@ -391,6 +393,7 @@ DEPENDENCIES:
   - "RNPdfScanner (from `../node_modules/@woonivers/react-native-document-scanner/ios`)"
   - RNPermissions (from `../node_modules/react-native-permissions`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
+  - RNRectangleScanner (from `../node_modules/react-native-rectangle-scanner/ios`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
@@ -483,6 +486,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-permissions"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
+  RNRectangleScanner:
+    :path: "../node_modules/react-native-rectangle-scanner/ios"
   RNScreens:
     :path: "../node_modules/react-native-screens"
   RNSVG:
@@ -521,7 +526,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 1540d1c01bb493ae3124ed83351b1b6a155db7da
   React-jsinspector: 512e560d0e985d0e8c479a54a4e5c147a9c83493
   react-native-image-editor: bd67912f38a8e7a895bf6eb8f445acdcefd8fd0c
-  react-native-perspective-image-cropper: af3013a660f8ae7c64508dd27c853954a7a047d4
+  react-native-perspective-image-cropper: 29ff50be7e375421c79e656e8a5fda87cb86a24a
   react-native-safe-area-context: b26361b9f0a5a17c371a80bb37b88493ea68c77e
   React-RCTActionSheet: f41ea8a811aac770e0cc6e0ad6b270c644ea8b7c
   React-RCTAnimation: 49ab98b1c1ff4445148b72a3d61554138565bad0
@@ -539,6 +544,7 @@ SPEC CHECKSUMS:
   RNPdfScanner: 3cb94a7536fcccd9597d25bdfadd19e613efcbd7
   RNPermissions: 1888705aebcc81714efa5dbff94351e4388ae012
   RNReanimated: b5ccb50650ba06f6e749c7c329a1bc3ae0c88b43
+  RNRectangleScanner: f735b7425c64ab1c4f6930fc334e30b2c78aa4a5
   RNScreens: c526239bbe0e957b988dacc8d75ac94ec9cb19da
   RNSVG: ce9d996113475209013317e48b05c21ee988d42e
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
@@ -546,6 +552,6 @@ SPEC CHECKSUMS:
   Yoga: 3ebccbdd559724312790e7742142d062476b698e
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 9c7289c788659e420f6ef8d52613454b5b009245
+PODFILE CHECKSUM: 9ac180a9b902c8384bd8c724604772762398cf76
 
 COCOAPODS: 1.9.3

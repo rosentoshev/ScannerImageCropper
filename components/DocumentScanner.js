@@ -57,24 +57,6 @@ function DocumentScanner({navigation}) {
       imageParam: data.initialImage,
       rectangleCoordinates: data.rectangleCoordinates,
     });
-    return (
-      <React.Fragment>
-        {/* <ImageEditor
-          image={data.initialImage}
-          rectangleCoordinates={data.rectangleCoordinates}
-          handleOnPressRetry={handleOnPressRetry}
-        /> */}
-        {/* <ImageCropper
-          image={data.initialImage}
-          rectangleCoordinates={data.rectangleCoordinates}
-          handleOnPressRetry={handleOnPressRetry}
-        /> */}
-        {/* <Image source={{uri: data.croppedImage}} style={styles.preview} />
-    //     <TouchableOpacity onPress={handleOnPressRetry} style={styles.button}>
-    //       <Text style={styles.buttonText}>Retry</Text>
-    //     </TouchableOpacity> */}
-      </React.Fragment>
-    );
   }
 
   function renderDetectionType() {
@@ -86,7 +68,7 @@ function DocumentScanner({navigation}) {
       case 2:
         return 'Rectangle too far';
       default:
-        return 'No feceipt detected yet';
+        return 'No receipt detected yet';
     }
   }
 
