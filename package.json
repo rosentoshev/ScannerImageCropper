@@ -26,7 +26,7 @@
     "react-native-image-crop-picker": "^0.32.0",
     "react-native-permissions": "^2.1.5",
     "react-native-perspective-image-cropper": "^0.4.3",
-    "react-native-reanimated": "^1.9.0",
+    "react-native-reanimated": "^2.10.0",
     "react-native-responsive": "^1.0.2",
     "react-native-responsive-dimensions": "^3.1.1",
     "react-native-responsive-screen": "^1.4.1",
